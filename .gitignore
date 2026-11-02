@@ -23,6 +23,7 @@
 *.dll
 *.so.*
 
+
 # Fortran module files
 *.mod
 *.smod
@@ -66,3 +67,7 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+
+.vscode/
+.vs/
