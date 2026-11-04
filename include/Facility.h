@@ -1,4 +1,6 @@
 // Facility.h
+// Purpose:
+// Author:
 
 #ifndef FACILITY_H
 #define FACILITY_H
@@ -16,13 +18,20 @@ class Facility
         string category;
 
     public:
+        //
         Facility();
+        //
         Facility(string id, string name, string building, string type);
 
+        //
         string get_facility_id() const;
+        //
         string get_facility_name() const;
+        //
         string get_building_name() const;
+        //
         string get_category() const;
+        //
         void print() const;
 };
 

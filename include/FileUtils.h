@@ -1,5 +1,6 @@
 // FileUtils.h
-// Reading data files and o
+// Purpose: Reading data files and o
+// Author:
 
 #ifndef FILEUTILS_H
 #define FILEUTILS_H
