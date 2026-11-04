@@ -1,6 +1,6 @@
 // FacilityManager.h
-// Purpose:
-// Author:
+// Purpose: Manages the facilities, loading them, displaying them, and searching through them
+// Author: Tobias
 
 #ifndef FACILITYMANAGER_H
 #define FACILITYMANAGER_H

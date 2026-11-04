@@ -1,6 +1,6 @@
 // FacilityManager.cpp
-// Purpose:
-// Author:
+// Purpose: To load, search, and display the facilities
+// Author: Tobias
 
 #include "FacilityManager.h"
 #include "FileUtils.h"
