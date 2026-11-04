@@ -21,9 +21,7 @@ namespace {
 		std::string result = trimName(name);
 
 		for (char& c : result) {
-			c = static_cast<char>{
-				std::tolower(static_cast<unsigned char> (c))
-			};
+			c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
 		}
 
 		return result;
@@ -45,17 +43,17 @@ int CampusGraph::findBuilding(const std::string& name) const {
 
 // adds building unless name is empty or dup
 bool CampusGraph::addBuilding(const std::string& name) {
-	std::string cleanName = trimName(Name);
+	std::string cleanName = trimName(name);
 	
 	if (cleanName.empty() || findBuilding(cleanName) != -1) {
 		return false;
 	}
 
-	building.push_back({ cleanName, {} });
+	buildings.push_back({ cleanName, {} });
 	return true;
 }
 // checks if building already exists
-bool CampusGraph::has Building(const std::string& name) const {
+bool CampusGraph::hasBuilding(const std::string& name) const {
 	return findBuilding(name) != -1;
 }
 // returns original spelling of building
@@ -67,5 +65,5 @@ std::string CampusGraph::getBuildingName(
 		return "";
 	}
 
-	return building[index].name;
+	return buildings[index].name;
 }
