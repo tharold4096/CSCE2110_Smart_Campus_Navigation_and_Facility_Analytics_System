@@ -1,6 +1,6 @@
 // FileUtils.cpp
 // Purpose: Parsing data file assisted class
-// Author:
+// Author: Tobias
 
 #include "FileUtils.h"
 

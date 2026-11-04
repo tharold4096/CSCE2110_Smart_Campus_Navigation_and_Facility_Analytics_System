@@ -1,5 +1,5 @@
 // Facility.h
-// Purpose:
+// Purpose: The header file for the facilities class
 // Author:
 
 #ifndef FACILITY_H
@@ -18,20 +18,20 @@ class Facility
         string category;
 
     public:
-        //
+        //DEfault constructor
         Facility();
-        //
+        //COnstructor with information assignment
         Facility(string id, string name, string building, string type);
 
-        //
+        //returns facility ID
         string get_facility_id() const;
-        //
+        //returns facility name
         string get_facility_name() const;
-        //
+        //returns building name
         string get_building_name() const;
-        //
+        //returns category
         string get_category() const;
-        //
+        //print function
         void print() const;
 };
 

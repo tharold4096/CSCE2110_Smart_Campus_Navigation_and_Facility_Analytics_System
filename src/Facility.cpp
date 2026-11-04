@@ -1,6 +1,6 @@
 // Facility.cpp
-// Purpose:
-// Author:
+// Purpose: TO hold facilities information and add methods to access that information 
+// Author: Tobias
 
 #include "Facility.h"
 #include <iostream>
