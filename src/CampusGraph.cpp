@@ -1,5 +1,7 @@
+
 #include "CampusGraph.h"
 #include <cctype>
+#include <iostream>
 
 namespace {
 
@@ -66,4 +68,83 @@ std::string CampusGraph::getBuildingName(
 	}
 
 	return buildings[index].name;
+}
+
+// adding undirected connections between two buildings and rejecting unknowns, self connects and dups
+
+bool CampusGraph::addConnection(
+	const std::string& first,
+	const std::string& second) {
+
+
+	//find both buildings 
+	int indexA = findBuilding(first);
+	int indexB = findBuilding(second);
+
+	//reject unknowns
+	if (indexA == -1 || indexB == -1) {
+		return false;
+	}
+
+
+	// building cannot connect to itsself
+	if (indexA == indexB) {
+		return false;
+	}
+
+	//checks for connection
+	for (int neighbor : buildings[indexA].neighbors) {
+		if (neighbor == indexB) {
+			return false;
+		}
+	}
+
+	// add connections in both directions
+	buildings[indexA].neighbors.push_back(indexB);
+	buildings[indexB].neighbors.push_back(indexA);
+
+	connectionCount++;
+
+	return true;
+}
+
+
+//displays all building and its connections 
+void CampusGraph::displayGraph() const {
+
+	if (buildings.empty()) {
+		std::cout << "No buildings available. \n";
+		return;
+
+	}
+
+	for (const Building& building : buildings) {
+		std::cout << building.name << ": ";
+		if (building.neighbors.empty()) {
+			std::cout << "(no connections)";
+		}
+		else {
+			for (int index : building.neighbors) {
+				std::cout << buildings[index].name << " ";
+			}
+		}
+		std::cout << "\n";
+
+	}
+}
+
+// display the graph counts and degrees
+
+void CampusGraph::displayStatistics() const {
+	std::cout << "Total buildings: " << buildings.size() << "\n";
+	std::cout << "Total connections: " << connectionCount << "\n";
+
+	if (buildings.empty()) {
+		std::cout << "No buildings available \n";
+		return;
+	}
+
+	for (const Building& building : buildings) {
+		std::cout << building.name << ": degree " << building.neighbors.size() << "\n";
+	}
 }
