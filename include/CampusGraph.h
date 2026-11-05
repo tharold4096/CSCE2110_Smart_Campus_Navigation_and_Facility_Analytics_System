@@ -31,7 +31,7 @@ public:
 	bool hasBuilding(const std::string& name) const;
 
 	//returns the accepted spelling of a building name.
-	std::string getbuildingName(const std::string& name) const;
+	std::string getBuildingName(const std::string& name) const;
 
 	//show all buildings and neighbors
 	void displayGraph() const;

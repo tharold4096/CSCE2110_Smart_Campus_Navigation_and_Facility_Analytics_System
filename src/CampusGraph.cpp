@@ -2,6 +2,7 @@
 #include "CampusGraph.h"
 #include <cctype>
 #include <iostream>
+#include <queue>
 
 namespace {
 
@@ -59,8 +60,7 @@ bool CampusGraph::hasBuilding(const std::string& name) const {
 	return findBuilding(name) != -1;
 }
 // returns original spelling of building
-std::string CampusGraph::getBuildingName(
-	const std::string& name) const {
+std::string CampusGraph::getBuildingName(const std::string& name) const {
 	int index = findBuilding(name);
 
 	if (index == -1) {
@@ -111,7 +111,6 @@ bool CampusGraph::addConnection(
 
 //displays all building and its connections 
 void CampusGraph::displayGraph() const {
-
 	if (buildings.empty()) {
 		std::cout << "No buildings available. \n";
 		return;
@@ -147,4 +146,40 @@ void CampusGraph::displayStatistics() const {
 	for (const Building& building : buildings) {
 		std::cout << building.name << ": degree " << building.neighbors.size() << "\n";
 	}
+}
+
+//finding all buildings that are reachable from a starting building using bfs
+
+void CampusGraph::bfsReachable(const std::string& start) const {
+	int startIndex = findBuilding(start);
+	if (startIndex == -1) {
+		std::cout << "Unknown building: " << start << "\n";
+		return;
+	}
+
+	// setting up the queue, visited list and the distances
+	std::queue<int> q;
+	std::vector<bool> visited(buildings.size(), false);
+	std::vector<int> distance(buildings.size(), 0);
+
+	//start of 
+	q.push(startIndex);
+	visited[startIndex] = true;
+	int reachableCount = 0;
+	while (!q.empty()) {
+		int current = q.front();
+		q.pop();
+		std::cout << buildings[current].name << " (distance " << distance[current] << ") \n";
+		reachableCount++;
+
+		//check neighboring buildings
+		for (int neighbor : buildings[current].neighbors) {
+			if (!visited[neighbor]) {
+				visited[neighbor] = true;
+				distance[neighbor] = distance[current] + 1;
+				q.push(neighbor);
+			}
+		}
+	}
+	std::cout << "Reachable: " << reachableCount << " of " << buildings.size() << " buildings\n";
 }
