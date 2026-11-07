@@ -7,6 +7,7 @@
 
 #include <string>
 #include <vector>
+#include "CampusGraph.h"
 #include "Facility.h"
 #include "HashTable.h"
 
@@ -21,12 +22,10 @@ class FacilityManager
 
         //Verify the facility ID is in the correct format
         bool is_valid_facility_id(const string& id) const;
-        //FInds the building based on name
-        string find_building(const string& name, const vector<string>& buildings) const;
 
     public:
-        //Loads the facilities from the file
-        bool load_facilities(const string& filename, const vector<string>& buildings);
+        //Loads the facilities from the file, checking each building against the campus graph
+        bool load_facilities(const string& filename, const CampusGraph& graph);
         //Displays all the facilities
         void display_facilities() const;
         //Searhces by ID after trimming and converting the input
