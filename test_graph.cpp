@@ -37,5 +37,21 @@ int main() {
 	std::cout << "\n---- BFS from Discovery ----\n";
 	graph.bfsReachable("Discovery");
 
+	// test for loading buildings from a file
+	std::cout << "\n--- Testing File Loading ---\n";
+
+	CampusGraph fileGraph;
+
+	fileGraph.loadBuildings("data/buildings.txt");
+	fileGraph.loadConnections("data/connections.txt");
+
+	fileGraph.displayGraph();
+	fileGraph.displayStatistics();
+
+	std::cout << "\n--- BFS from Library ---\n";
+	fileGraph.bfsReachable("Library");
+
+
+
 	return 0;
 }

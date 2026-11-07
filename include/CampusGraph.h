@@ -42,6 +42,11 @@ public:
 	//finds reachable buildings using BFS
 	void bfsReachable(const std::string& start) const;
 
+	// loads campus buildings from a text file
+	void loadBuildings(const std::string& filename);
+
+	// Loads connections from a file.
+	void loadConnections(const std::string& filename);
 };
 
 

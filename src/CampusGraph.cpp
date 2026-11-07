@@ -3,6 +3,10 @@
 #include <cctype>
 #include <iostream>
 #include <queue>
+#include "FileUtils.h"
+#include <fstream>
+#include <iostream>
+
 
 namespace {
 
@@ -148,6 +152,10 @@ void CampusGraph::displayStatistics() const {
 	}
 }
 
+
+
+
+
 //finding all buildings that are reachable from a starting building using bfs
 
 void CampusGraph::bfsReachable(const std::string& start) const {
@@ -182,4 +190,118 @@ void CampusGraph::bfsReachable(const std::string& start) const {
 		}
 	}
 	std::cout << "Reachable: " << reachableCount << " of " << buildings.size() << " buildings\n";
+}
+
+
+
+
+
+
+//loads buildings from the given text
+void CampusGraph::loadBuildings(const std::string& filename) {
+	std:ifstream file(filename);
+	int accepted = 0;
+	int rejected = 0;
+
+	if (!file.is_open()) {
+		std::cout << "Error: Cannot open " << filename << "\n"; 
+		print_load_summary(filename, 0, 0);
+		return;
+	}
+	std::string line;
+	int lineNumber = 0;
+
+	//read all lines 
+	while (std::getline(file, line)) {
+		lineNumber++;
+
+		if (is_skippable_line(line)) {
+			continue; 
+		}
+
+		std::vector<std::string> fields = split_fields(line);
+		if (fields.size() != 1 || fields[0].empty()) {
+			print_load_warning(filename, lineNumber, "Invalid building record");
+			rejected++;
+			continue;
+
+		}
+
+		//try to add the building
+		if (!addBuilding(fields[0])) {
+			print_load_warning(filename, lineNumber, "Duplicate building");
+			rejected++;
+			continue;
+		}
+		accepted++;
+	}
+	// print how many records were loaded.
+	print_load_summary(filename, accepted, rejected);
+	}
+
+
+
+
+
+
+
+
+	void CampusGraph::loadConnections(const std::string& filename) {
+		std::ifstream file(filename);
+		int accepted = 0;
+		int rejected = 0;
+
+		// check if file opened.
+		if (!file.is_open()) {
+			std::cout << "Error: Cannot open " << filename << "\n";
+			print_load_summary(filename, 0, 0);
+			return;
+		}
+		std::string line;
+		int lineNumber = 0;
+
+		// read each line.
+		while (std::getline(file, line)) {
+			lineNumber++;
+			if (is_skippable_line(line)) {
+				continue;
+			}
+			// separate the two building names.
+			std::vector<std::string> fields = split_fields(line);
+
+			if (fields.size() != 2 || fields[0].empty() || fields[1].empty()) {
+
+				print_load_warning(filename, lineNumber, "Invalid connection record");
+				rejected++;
+				continue;
+			}
+
+			// Check that both buildings exist.
+			if (!hasBuilding(fields[0])) {print_load_warning(filename, lineNumber, "Unknown building: " + fields[0]);
+				rejected++;
+				continue;
+			}
+
+			if (!hasBuilding(fields[1])) {
+				print_load_warning(filename, lineNumber, "Unknown building: " + fields[1]);
+				rejected++;
+				continue;
+			}
+
+			// A building cannot connect to itself.
+			if (equals_ignore_case(fields[0], fields[1])) {print_load_warning(filename, lineNumber, "Self-connection");
+				rejected++;
+				continue;
+			}
+
+			// Try to add the connection.
+			if (!addConnection(fields[0], fields[1])) {
+				print_load_warning(filename, lineNumber, "Duplicate connection");
+				rejected++;
+				continue;
+			}
+			accepted++;
+		}
+		print_load_summary(filename, accepted, rejected);
+
 }
