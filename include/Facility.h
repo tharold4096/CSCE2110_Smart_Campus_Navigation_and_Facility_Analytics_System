@@ -1,6 +1,6 @@
 // Facility.h
 // Purpose: The header file for the facilities class
-// Author:
+// Author: Tobias
 
 #ifndef FACILITY_H
 #define FACILITY_H
