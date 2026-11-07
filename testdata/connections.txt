@@ -1,0 +1,9 @@
+
+# Connection validation tests
+Library|Union
+Union|Gym
+Gym|Union
+Library|Library
+Library|Missing Hall
+Library
+Library|

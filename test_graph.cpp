@@ -3,8 +3,6 @@
 
 int main() {
 	CampusGraph graph;
-
-
 	graph.addBuilding("Library");
 	graph.addBuilding("Union");
 	graph.addBuilding("Gym");
@@ -51,6 +49,34 @@ int main() {
 	std::cout << "\n--- BFS from Library ---\n";
 	fileGraph.bfsReachable("Library");
 
+	//testing for BFS from an isolated buildin
+	std::cout << "\n--- BFS from Observatory ---\n";
+	fileGraph.bfsReachable("Observatory");
+
+	// testing for BFS from a building that doesnt exist
+	std::cout << "\n---- BFS from Unknown Building ----\n";
+	fileGraph.bfsReachable("Fake Building");
+
+	// testing for BFS with lowercase input
+	std::cout << "\n---- BFS with Lowercase Name ----\n";
+	fileGraph.bfsReachable("library");
+
+
+	// test invalid campus data.
+	std::cout << "\n---- Invalid Data Tests ----\n";
+	CampusGraph invalidGraph;
+	invalidGraph.loadBuildings("testdata/buildings.txt");
+	invalidGraph.loadConnections("testdata/connections.txt");
+	invalidGraph.displayGraph();
+	invalidGraph.displayStatistics();
+
+
+	// test missing files.
+	std::cout << "\n--- Missing File Tests ---\n";
+	CampusGraph missingGraph;
+	missingGraph.loadBuildings("testdata/missing.txt");
+	missingGraph.loadConnections("testdata/missing2.txt");
+	missingGraph.displayStatistics();
 
 
 	return 0;
