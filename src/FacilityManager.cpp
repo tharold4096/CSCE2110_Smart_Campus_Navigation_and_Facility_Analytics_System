@@ -56,6 +56,7 @@ bool FacilityManager::load_facilities(const string& filename, const vector<strin
     if (!file.is_open())
     {
         cerr << "Error: Could not open file " << filename << endl;
+        print_load_summary(filename, 0, 0);
         return false;
     }
 
