@@ -11,9 +11,9 @@ Tobias Harold
 
 Adrian Ochoa
   Components:        CampusGraph (adjacency list, BFS, statistics)
-  Tasks completed:   ...
+  Tasks completed:   Created the CampusGraph class, implemented adjacency lists, building and connection loading, BFS, and graph statistics.
   Testing/debugging: Tested building/connection loading, statistics, BFS
-  GitHub:            campus-graph-bfs branch
+  GitHub:            Created the campus-graph-bfs branch, committed and pushed my code and tests, and had my work merged into main.
 
 Roshan Sharma
   Components:        DepartmentNode, Department Tree(General Tree)
@@ -29,7 +29,7 @@ Tobias Harold
 I worked on the basic file loading first, copying over the file utils in order to streamline the writing of the actual data loading. Wrote the class so that it could handle different data inputs and trim them effectively, and keep the data stored correctly in the graph/tree/hashtables. I also implimented the hashtables class to handle the data structure for hashtables, with a set prime key and sorting the collisions that came up due to the data. Additionally, I wrote the menu, following the same case pattern as project 1 to ensure smooth operation of the loop. 
 
 Adrian Ochoa
-<paragraph>
+I worked on the Campus Graph portion of the project. I created the CampusGraph class to store buildings and their connections using an adjacency list. I implemented BFS to find reachable buildings and their distances. I also added file loading, graph statistics, and tested the program with valid and invalid data to make sure everything worked correctly.
 
 Roshan Sharma
 I worked on the Department Tree part. I created the DepartmentNode and DepartmentTree classes to organize univesity departments in a parent-child structure. I implemented functions to load, add, search, and display department using a general tree structure. I tested my code independently and through menu option 6-9. Finally, I pushed my code to GitHub.
