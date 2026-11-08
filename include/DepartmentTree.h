@@ -28,6 +28,9 @@ public:
     bool addDepartment(const std::string& name,
                        const std::string& parentName);
 
+    bool isEmpty() const { return root == nullptr; }
+    bool hasDepartment(const std::string& name) const;
+
     void searchDepartment(const std::string& name) const;
     void displayHierarchy() const;
     void preorderTraversal() const;

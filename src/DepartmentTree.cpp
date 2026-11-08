@@ -67,6 +67,10 @@ bool DepartmentTree::addDepartment(
     return true;
 }
 
+bool DepartmentTree::hasDepartment(const string& name) const {
+    return findNode(root, name) != nullptr;
+}
+
 void DepartmentTree::loadFromFile(const string& filename) {
     ifstream file(filename);
 
