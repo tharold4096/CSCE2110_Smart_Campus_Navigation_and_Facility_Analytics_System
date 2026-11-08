@@ -35,21 +35,7 @@ bool FacilityManager::is_valid_facility_id(const string& id) const
     return true;
 }
 
-string FacilityManager::find_building(const string& name, const vector<string>& buildings) const
-{
-    // looping over buildings, compare each building with name.
-    for(const string& building : buildings)
-    {
-        if (equals_ignore_case(building, name))
-        {
-            return building;
-        }
-    }
-
-    return "";
-}
-
-bool FacilityManager::load_facilities(const string& filename, const vector<string>& buildings)
+bool FacilityManager::load_facilities(const string& filename, const CampusGraph& graph)
 {
     //open the file
     ifstream file(filename);
@@ -118,7 +104,8 @@ bool FacilityManager::load_facilities(const string& filename, const vector<strin
         }
 
         string building = fields[2];
-        string matched_building = find_building(building, buildings);
+        //graph returns its stored spelling, or empty if the building is unknown
+        string matched_building = graph.getBuildingName(building);
         if (matched_building.empty())
         {
             print_load_warning(filename, line_number, "unknown building " + building);
