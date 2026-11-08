@@ -1,0 +1,12 @@
+Campus Graph and BFS
+ 
+
+The campus graph uses an adjacency list to store buildings and connections. Each building has a name and a vector of neighbor buildings indices. Connections are stored in both directions b/c the graph is undirected.
+We chose an adjacency list b/c its simple to use and lets us add buildings without having a fixed size.
+BFS uses queues and visited vector to find reachable buildings as well as keeps track of the distance from the starting building
+The program loads buildings and connections from text files and checks for dups or invalid records.
+
+
+
+
+

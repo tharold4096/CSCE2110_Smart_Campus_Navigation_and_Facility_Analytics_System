@@ -1,0 +1,55 @@
+Test 1: BFS Reachability
+Description: Find reachable buildings from Library
+Input: Library
+Expected: 6 of 7 buildings reachable
+Actual: 6 of 7 buildings reachable
+Result: PASS
+
+Test 2: Graph File Loading
+Description: Load buildings and connections from text files
+Input: buildings.txt and connections.txt
+Expected: 7 buildings and 6 connections loaded
+Actual: 7 buildings and 6 connections loaded
+Result: PASS
+
+Test 3: Graph Statistics
+Description: Check building counts and degrees
+Input: Sample campus data
+Expected: 7 buildings, 6 connections, and correct degrees
+Actual: All counts and degrees matched
+Result: PASS
+
+Test 4: Isolated Building
+Description: Run BFS from Observatory
+Input: Observatory
+Expected: 1 of 7 buildings reachable
+Actual: 1 of 7 buildings reachable
+Result: PASS
+
+Test 5: Unknown Building
+Description: Test BFS with a building that does not exist
+Input: Fake Building
+Expected: Unknown building error
+Actual: Unknown building error displayed
+Result: PASS
+
+Test 6: Case Insensitive Search
+Description: Test BFS using a lowercase building name
+Input: library
+Expected: 6 of 7 buildings reachable
+Actual: 6 of 7 buildings reachable
+Result: PASS
+
+Test 7: Invalid Data
+Description: Test duplicate and invalid building connections
+Input: testdata/buildings.txt and testdata/connections.txt
+Expected: 4 buildings accepted, 2 rejected; 2 connections accepted, 5 rejected
+Actual: Results matched expected counts
+Result: PASS
+
+Test 8: Missing Files
+Description: Test loading files that do not exist
+Input: missing.txt and missing2.txt
+Expected: Error messages without crashing
+Actual: Both errors displayed and program continued
+Result: PASS
