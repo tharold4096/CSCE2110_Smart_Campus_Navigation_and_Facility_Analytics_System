@@ -16,10 +16,10 @@ Adrian Ochoa
   GitHub:            campus-graph-bfs branch
 
 Roshan Sharma
-  Components:        DepartmentTre
-  Tasks completed:   ...
-  Testing/debugging: ...
-  GitHub:            department-tree branch
+  Components:        DepartmentNode, Department Tree(General Tree)
+  Tasks completed:   Implimented the department tree using parent pointers adn vector-based children. Added department loading, searching, hierarchy display and preorder traversal.
+  Testing/debugging: Tested loading all 7 departements, case-insenstitive searching, adding departments, rejecting duplicates, hierarchy indentation, and preorder traversal.
+  GitHub:            department-tree branch, PR #1 merged into main.
 
 --------------------------------------------------
 Individual Summaries
@@ -32,4 +32,4 @@ Adrian Ochoa
 <paragraph>
 
 Roshan Sharma
-<paragraph>
+I worked on the Department Tree part. I created the DepartmentNode and DepartmentTree classes to organize univesity departments in a parent-child structure. I implemented functions to load, add, search, and display department using a general tree structure. I tested my code independently and through menu option 6-9. Finally, I pushed my code to GitHub.
