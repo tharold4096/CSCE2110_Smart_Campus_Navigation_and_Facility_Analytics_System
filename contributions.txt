@@ -1,0 +1,35 @@
+==================================================
+Milestone 1
+==================================================
+
+Tobias Harold
+  Components:        Facility, HashTable, FacilityManager, FileUtils, main menu
+  Tasks completed:  ...
+  Testing/debugging: ...
+  GitHub:            Repo setup (.gitignore, .gitattributes), hashtables and
+                     menu branches, PR #2, merging feature branches into menu
+
+Adrian Ochoa
+  Components:        CampusGraph (adjacency list, BFS, statistics)
+  Tasks completed:   ...
+  Testing/debugging: Tested building/connection loading, statistics, BFS
+  GitHub:            campus-graph-bfs branch
+
+Roshan Sharma
+  Components:        DepartmentTre
+  Tasks completed:   ...
+  Testing/debugging: ...
+  GitHub:            department-tree branch
+
+--------------------------------------------------
+Individual Summaries
+--------------------------------------------------
+
+Tobias Harold
+<paragraph>
+
+Adrian Ochoa
+<paragraph>
+
+Roshan Sharma
+<paragraph>
