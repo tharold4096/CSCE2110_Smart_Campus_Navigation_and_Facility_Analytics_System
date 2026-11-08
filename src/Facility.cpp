@@ -1,5 +1,6 @@
 // Facility.cpp
-
+// Purpose: TO hold facilities information and add methods to access that information 
+// Author: Tobias
 
 #include "Facility.h"
 #include <iostream>
@@ -44,5 +45,5 @@ string Facility::get_category() const
 
 void Facility::print() const
 {
-    cout << "ID: " << facility_id << " | " << "Name: " << " | " << facility_name << "Building: " << building_name << " | " << "Category: " << category << endl;
+    cout << "ID: " << facility_id << " | " << "Name: " << facility_name << " | " << "Building: " << building_name << " | " << "Category: " << category << endl;
 }
