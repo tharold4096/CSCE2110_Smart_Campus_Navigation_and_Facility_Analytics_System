@@ -21,6 +21,26 @@ Roshan Sharma
   Testing/debugging: Tested loading all 7 departements, case-insenstitive searching, adding departments, rejecting duplicates, hierarchy indentation, and preorder traversal.
   GitHub:            department-tree branch, PR #1 merged into main.
 
+==================================================
+Milestone 2
+==================================================
+Tobias Harold
+  Components: Facility searching by ID, Category, and category report. Ran collision testing because it was not in the first milestone, and fixed small errors and finished the new menu for the reporting and other functions options.
+  Tasks completed: Functions in Facility manager including searching by ID and category, and then also the facility category reporting. Ran the hash table collision testing and reported the outcome, verified the chaining functionality as opposed to table full issues. 
+  Testing/debugging: Debugged an issue with the facility loader test data, causing issues of compile errors that made the real issue seem much more complicated.
+  GitHub: Merged PR3-4 for menu and then also facility searching and category reporting. 
+
+Adrian Ochoa
+  Components:
+  Tasks completed:
+  Testing/debugging:
+  GitHub:            
+
+Roshan Sharma
+  Components:
+  Tasks completed:
+  Testing/debugging:
+  GitHub:            
 --------------------------------------------------
 Individual Summaries
 --------------------------------------------------
@@ -28,6 +48,8 @@ Individual Summaries
 Tobias Harold
 I worked on the basic file loading first, copying over the file utils in order to streamline the writing of the actual data loading. Wrote the class so that it could handle different data inputs and trim them effectively, and keep the data stored correctly in the graph/tree/hashtables. I also implimented the hashtables class to handle the data structure for hashtables, with a set prime key and sorting the collisions that came up due to the data. Additionally, I wrote the menu, following the same case pattern as project 1 to ensure smooth operation of the loop. 
 
+Milestone 2:
+I worked on the facility searching by ID portion, and the additionally the category reporting for facilities. I made sure to sort the categories approprately and use my data loading functions to trim and clean the data. During hash collision testing some source code got into the actual test data folder, which caused a ton of failed tests and compiler errors that I had to sort through and trace the issue. The issue was load_facilities, which had some incorrect code from a different function accidentally pasted into it. Once I cleared that, I was able to restore the empy filed and ID-format checks it had before, and fixed the hash table insert call to its correct single arguement form before running the tests again.
 Adrian Ochoa
 I worked on the Campus Graph portion of the project. I created the CampusGraph class to store buildings and their connections using an adjacency list. I implemented BFS to find reachable buildings and their distances. I also added file loading, graph statistics, and tested the program with valid and invalid data to make sure everything worked correctly.
 
