@@ -6,6 +6,8 @@ We chose an adjacency list b/c its simple to use and lets us add buildings witho
 BFS uses queues and visited vector to find reachable buildings as well as keeps track of the distance from the starting building
 The program loads buildings and connections from text files and checks for dups or invalid records.
 
+Campus hash table
+We chose to use normalized input passed into a hash funtion, h = (h*31 + c) % capacity using the uppercase ID number. Each different bucket in this table is a vector, and a collision simply adds the number to it. This is know as chaining, and was decided that the extra memory cost was worth the ability to keep each different ID in the table. Detecting collision only occurs when a bucket already contains a facility, not during the first time, so the insert function always checks contains() first. 13 was chosen as a prime due to the 10 records, that still produce a real, testable collision. Past that number nothing breaks, entries and lookup just get longer as the vectors expand. 
 
 
 
