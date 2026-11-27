@@ -30,6 +30,12 @@ class FacilityManager
         void display_facilities() const;
         //Searhces by ID after trimming and converting the input
         void search_by_id(const string& input) const;
+        //Searches by the complete name, ignoring case and outer whitespace
+        void search_by_name(const string& input) const;
+        //Searches by the complete category, ignoring case and outer whitespace
+        void search_by_category(const string& input) const;
+        //Displays the count and percentage of each category
+        void category_report() const;
         //returns all facilities as a vector
         const vector<Facility>& get_all_facilities() const;
 };

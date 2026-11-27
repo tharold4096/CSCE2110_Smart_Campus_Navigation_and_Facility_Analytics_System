@@ -7,6 +7,7 @@
 
 #include <cctype>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 
 using namespace std;
@@ -168,6 +169,114 @@ void FacilityManager::search_by_id(const string& input) const
 
     cout << "Found: ";
     facility->print();
+}
+
+//Searches through the facilities by complete name
+void FacilityManager::search_by_name(const string& input) const
+{
+    string name = trim(input);
+    int matches = 0;
+
+    //simple scan so matches print in file order
+    for (const Facility& facility : facilities)
+    {
+        if (equals_ignore_case(facility.get_facility_name(), name))
+        {
+            facility.print();
+            matches++;
+        }
+    }
+
+    if (matches == 0)
+    {
+        cout << "No facility named " << name << endl;
+    }
+    cout << "Matches: " << matches << endl;
+}
+
+//Searches through the facilities by complete category
+void FacilityManager::search_by_category(const string& input) const
+{
+    string category = trim(input);
+    int matches = 0;
+
+    for (const Facility& facility : facilities)
+    {
+        if (equals_ignore_case(facility.get_category(), category))
+        {
+            facility.print();
+            matches++;
+        }
+    }
+
+    if (matches == 0)
+    {
+        cout << "No facilities in category " << category << endl;
+    }
+    cout << "Matches: " << matches << endl;
+}
+
+//Displays the count and percentage of each category
+void FacilityManager::category_report() const
+{
+    if (facilities.empty())
+    {
+        cout << "No facilities available." << endl;
+        cout << "Total: 0" << endl;
+        return;
+    }
+
+    //parallel vectors keep categories in the order they were first accepted
+    vector<string> categories;
+    vector<int> counts;
+
+    for (const Facility& facility : facilities)
+    {
+        bool found = false;
+        for (size_t i = 0; i < categories.size(); ++i)
+        {
+            //grouping ignores case, but keeps the first spelling
+            if (equals_ignore_case(categories[i], facility.get_category()))
+            {
+                counts[i]++;
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            categories.push_back(facility.get_category());
+            counts.push_back(1);
+        }
+    }
+
+    //finding the longest category so the columns line up
+    size_t width = 8;
+    for (const string& category : categories)
+    {
+        if (category.size() > width)
+        {
+            width = category.size();
+        }
+    }
+    width += 2;
+
+    int total = facilities.size();
+    cout << fixed << setprecision(1);
+    cout << left << setw(width) << "Category" << right << setw(6) << "Count" << setw(12) << "Percentage" << endl;
+
+    for (size_t i = 0; i < categories.size(); ++i)
+    {
+        //total is never zero here, the empty case returned above
+        double percent = 100.0 * counts[i] / total;
+        cout << left << setw(width) << categories[i] << right << setw(6) << counts[i] << setw(11) << percent << "%" << endl;
+    }
+
+    cout << left << setw(width) << "Total" << right << setw(6) << total << setw(11) << 100.0 << "%" << endl;
+    //putting cout back to the default so later output isnt affected
+    cout.unsetf(ios::fixed);
+    cout << setprecision(6);
 }
 
 const vector<Facility>& FacilityManager::get_all_facilities() const

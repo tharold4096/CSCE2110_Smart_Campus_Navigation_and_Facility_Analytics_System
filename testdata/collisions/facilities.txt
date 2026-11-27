@@ -1,0 +1,8 @@
+# Hash collision test data (capacity 13, h = (h * 31 + c) % 13 over the uppercase ID)
+F006|Computer Lab B|Engineering Building|Computer Lab
+F011|Study Room A|Library|Study Room
+F029|Study Room B|Library|Study Room
+F001|Main Reading Room|Library|Library
+F019|Robotics Lab|Engineering Building|Computer Lab
+F002|Tutoring Center|Library|Tutoring Center
+f011|Duplicate Study Room|Library|Study Room
