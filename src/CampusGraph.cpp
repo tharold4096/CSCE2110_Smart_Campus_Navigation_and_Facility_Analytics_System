@@ -6,6 +6,7 @@
 #include "FileUtils.h"
 #include <fstream>
 #include <iostream>
+#include <algorithm>
 
 
 namespace {
@@ -305,3 +306,75 @@ void CampusGraph::loadBuildings(const std::string& filename) {
 		print_load_summary(filename, accepted, rejected);
 
 }
+
+	/// MileStone 2 
+
+	void CampusGraph::shortestRoute(const std::string& start, const std::string& destrination) const {
+		int startIndex = findBuilding(start);
+		int endIndex = findBuilding(destination);
+
+		// checking if starting building exists
+		if (startIndex == -1) {
+			std::cout << "Uknown starting building: " << start << "\n";
+			return;
+		}
+
+		//checking if destination exists 
+		if (endIndex == -1) {
+			std::cout << "Unknown destination: " << destination << "\n";
+			return;
+		}
+
+		// for starting and ending at the same building
+		if (startIndex == endIndex) {
+			std::cout << buildings[startIndex].name << "\n";
+			std::cout << "Number of connections: 0\n";
+			return;
+		}
+		// setting up BFS
+		std::queue<int> q;
+		std::vector<bool> visited(buildings.size(), false);
+		std::vector<int> parent(buildings.size(), -1);
+		q.push(startIndex);
+		visited[startIndex] = true;
+		
+		//explore building with BFS
+		while (!q.empty()) {
+			int current = q.front();
+			q.pop();
+
+			if (current == endIndex) {
+				break;
+
+			}
+			for (int neighbor : buildings[current].neighbors) {
+				if (!visited[neighbor]) {
+					visited[neighbor] = true;
+					parent[neighbor] = current;
+					q.push(neighbor);
+				}
+			}
+		}
+
+		//checking if the route exists
+		if (!visited[endIndex]) {
+			std::cout << "No path exists between " << start << " and " << destrination << "\n";
+			return;
+		}
+		// remaking shortest path
+		std::vector<int> path;
+		int current = endIndex;
+		while (current != -1) {
+			path.push_back(current);
+			current = parent[current];
+
+		}
+
+		std::reverse(path.begin(), path.end());
+
+		//display
+		for (int index : path) {
+			std::cout << buildings[index].name << "\n";
+		}
+		std::cout << "Number of connections: " << path.size() - 1 << "\n";
+	}

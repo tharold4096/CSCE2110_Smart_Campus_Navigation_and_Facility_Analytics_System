@@ -47,6 +47,11 @@ public:
 
 	// Loads connections from a file.
 	void loadConnections(const std::string& filename);
+
+	// Finds the shortest route between two locations
+	void shortestRoute(const std::string& start,
+	const std::string& destination) const;
+
 };
 
 
