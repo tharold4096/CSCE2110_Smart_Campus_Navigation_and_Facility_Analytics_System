@@ -53,3 +53,35 @@ Input: missing.txt and missing2.txt
 Expected: Error messages without crashing
 Actual: Both errors displayed and program continued
 Result: PASS
+
+Test 9: Hash Table Collisions
+Description: Load facility IDs chosen to collide under the hash function at capacity 13
+Input: ./campus testdata/collisions
+Collision definition: an accepted insertion into a bucket that already holds at least one facility
+Hash buckets: F006, F011, F029 -> bucket 0; F001, F019 -> bucket 8; F002 -> bucket 9
+Expected: 6 accepted, 1 rejected (duplicate f011); capacity 13, entries 6, collisions 3
+Actual:
+Warning: testdata/collisions/facilities.txt line 13: duplicate facility ID F011
+testdata/collisions/facilities.txt: 6 accepted, 1 rejected
+(hash capacity 13, entries 6, collisions 3)
+Result: PASS
+
+Test 10: Duplicate ID Does Not Count As A Collision
+Description: f011 duplicates F011 ignoring case and hashes to the occupied bucket 0
+Input: ./campus testdata/collisions
+Expected: record rejected, first record kept, collision count stays at 3
+Actual: duplicate warning shown, collisions 3, search F011 returns Study Room A (the first record)
+Result: PASS
+
+Test 11: Lookup Through Collision Chains
+Description: Search by ID for every facility that shares a bucket, plus a missing ID in an occupied bucket
+Input: Menu option 2 with F006, f011, F029, F001, F019, F024
+Expected: all five stored IDs found; F024 (bucket 8, not stored) not found
+Actual:
+Found: ID: F006 | Name: Computer Lab B | Building: Engineering Building | Category: Computer Lab
+Found: ID: F011 | Name: Study Room A | Building: Library | Category: Study Room
+Found: ID: F029 | Name: Study Room B | Building: Library | Category: Study Room
+Found: ID: F001 | Name: Main Reading Room | Building: Library | Category: Library
+Found: ID: F019 | Name: Robotics Lab | Building: Engineering Building | Category: Computer Lab
+Not found: no facility with ID F024
+Result: PASS
