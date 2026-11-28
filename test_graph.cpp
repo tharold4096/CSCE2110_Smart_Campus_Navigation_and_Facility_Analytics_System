@@ -79,5 +79,30 @@ int main() {
 	missingGraph.displayStatistics();
 
 
+
+	// milestone 2 shortest path testing
+	std::cout << "\n--- Shortest path Tests ---";
+	std::cout << "\nLibrary to engineering building\n";
+	fileGraph.shortestRoute("Library", "Engineering Building");
+
+	std::cout << "\nLibrary to Gym\n";
+	fileGraph.shortestRoute("Library", "Gym");
+
+	std::cout << "\nLibrary to Library\n";
+	fileGraph.shortestRoute("Library", "Library");
+
+	std::cout << "\nLibrary to Observatory\n";
+	fileGraph.shortestRoute("Library", "Observatory");
+
+	std::cout << "\nunknown starting building\n";
+	fileGraph.shortestRoute("Fake Building", "Library");
+
+	std::cout << "\nUnknown destination\n";
+	fileGraph.shortestRoute("Library", "Fake Building");
+
+	std::cout << "\nLowercase building names\n";
+	fileGraph.shortestRoute("library", "gym");
+
+
 	return 0;
 }

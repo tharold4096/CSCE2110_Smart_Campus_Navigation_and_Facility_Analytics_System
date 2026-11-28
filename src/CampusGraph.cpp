@@ -309,7 +309,7 @@ void CampusGraph::loadBuildings(const std::string& filename) {
 
 	/// MileStone 2 
 
-	void CampusGraph::shortestRoute(const std::string& start, const std::string& destrination) const {
+	void CampusGraph::shortestRoute(const std::string& start, const std::string& destination) const {
 		int startIndex = findBuilding(start);
 		int endIndex = findBuilding(destination);
 
@@ -358,7 +358,7 @@ void CampusGraph::loadBuildings(const std::string& filename) {
 
 		//checking if the route exists
 		if (!visited[endIndex]) {
-			std::cout << "No path exists between " << start << " and " << destrination << "\n";
+			std::cout << "No path exists between " << start << " and " << destination << "\n";
 			return;
 		}
 		// remaking shortest path
