@@ -103,6 +103,14 @@ int main() {
 	std::cout << "\nLowercase building names\n";
 	fileGraph.shortestRoute("library", "gym");
 
+	// testing short routes
+	std::cout << "\n--- Tie breaking test ---\n";
+	CampusGraph tieGraph;
+	tieGraph.loadBuildings("testdata/tie_break/buildings.txt");
+	tieGraph.loadConnections("testdata/tie_break/connections.txt");
+
+	tieGraph.shortestRoute("A", "D");
+
 
 	return 0;
 }
